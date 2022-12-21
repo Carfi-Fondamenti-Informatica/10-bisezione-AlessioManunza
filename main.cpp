@@ -36,8 +36,8 @@ float bisezione (float a , float b) {
             }
             else
             {
-                cout << x << endl;
-                cout << funzione(x) << endl;
+                cout << trucf(x) << endl;
+                cout <<truncf( funzione(x)) << endl;
                 i-- ;
             }
         }
