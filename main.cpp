@@ -1,51 +1,42 @@
 #include <iostream>
-#include <cmath>
+#include "math.h"
 using namespace std;
+float a, b;
+float x=0;
+float err=0;
 
-float funzione (float y) {
-    y=pow (y , 2)*cos(y)+1 ;
-    return y ;
-}
 
-float bisezione (float a , float b) {
-    int i = 1;
-    float x = 0 ,z=0 ;
-    float err = 0;
-    do {
-        cout << "inserire estremi" << endl;
-        cin >> a >> b;
-    } while ((funzione(a) * funzione(b)) >= 0);
-    while (i>0) {
-        x=(a+b)/2 ;
-        if (funzione(x)==0){
-            cout << x << endl;
-            cout << funzione(x) << endl;
-        }
-        else  {
-            z=funzione(a)*funzione(b) ;
-        }
-        while (i>0) {
-            if (z < 0) {
-                b = x;
-            } else {
-                a = x;
-            }
-            err=abs(((b-6)/2));
-            if (err>=(1/pow(M_E , -6))){
-                break;
-            }
-            else
-            {
-                cout << trucf(x) << endl;
-                cout <<truncf( funzione(x)) << endl;
-                i-- ;
-            }
-        }
-    }
+double f (double y) {
+    y=pow(y,2)* cos(y)+1;
+    return y;
 }
 
 int main() {
-   float a , b ;
-    bisezione (a , b) ;
-   return 0;
-}
+    do {
+        cout << "inserire estremi" << endl;
+        cin >> a >> b;
+    }  while((f(a)*f(b))>=0);
+
+    do {
+        x = (a + b) / 2;
+
+        if (f(x) == 0) {
+            cout << x << endl;
+        }
+
+            if ((f(x) * f(b)) < 0) {
+                a = x;
+            } else {
+                b = x;
+            }
+            err = abs((b - a) / 2);
+
+    } while (err >= 1e-6);
+    int f= x *10000;
+
+   float s= (float)f/10000;
+    cout<<s<<endl;
+
+        return 0;
+
+    }
